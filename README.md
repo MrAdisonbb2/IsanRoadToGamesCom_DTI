@@ -92,7 +92,7 @@
 ดาวน์โหลด **Godot Engine 4.7.1 (stable, Standard)** จาก <https://godotengine.org/download> แตกไฟล์ไว้ที่ไหนก็ได้ (ไม่ต้องติดตั้ง)
 
 ### 2. ดาวน์โหลดเกม
-- ใช้ Git: `git clone https://github.com/MrAdisonbb2/IsanGameJam-2026-10-24_09-27-19.git`
+- ใช้ Git: `git clone https://github.com/MrAdisonbb2/IsanRoadToGamesCom_DTI.git`
 - หรือกดปุ่ม **Code → Download ZIP** บน GitHub แล้วแตกไฟล์
 
 ### 3. เปิดเล่น (เลือกวิธีใดวิธีหนึ่ง)
