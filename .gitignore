@@ -9,6 +9,7 @@ assets/
 
 # Saves, backups, temp files
 saves.json
+saves/
 *.bak
 *.bak*
 *.tmp

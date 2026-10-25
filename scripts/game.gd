@@ -4,7 +4,8 @@ extends Node
 ## Holds the 3 one-life save slots, the boss HP shared across every slot,
 ## karma passed from one life to the next, data tables, audio and UI helpers.
 
-const SAVE_PATH := "user://saves.json"
+## Saves live in a saves/ folder next to the game (see save_path()), not in AppData.
+const SAVE_FILE := "saves.json"
 const A := "res://game_assets/"
 const BOSS_MAX_HP := 1000
 const BOSS_PHASES := 3
@@ -269,9 +270,9 @@ func new_data() -> Dictionary:
 
 func load_game() -> void:
 	data = new_data()
-	if not FileAccess.file_exists(SAVE_PATH):
+	if not FileAccess.file_exists(save_path()):
 		return
-	var f := FileAccess.open(SAVE_PATH, FileAccess.READ)
+	var f := FileAccess.open(save_path(), FileAccess.READ)
 	var parsed = JSON.parse_string(f.get_as_text())
 	if parsed is Dictionary and parsed.has("slots"):
 		for k in parsed:
@@ -281,8 +282,51 @@ func load_game() -> void:
 func save_game() -> void:
 	if Engine.is_editor_hint():
 		return
-	var f := FileAccess.open(SAVE_PATH, FileAccess.WRITE)
+	var f := FileAccess.open(save_path(), FileAccess.WRITE)
+	if f == null and _save_path != "user://" + SAVE_FILE:
+		# The game folder is not writable (e.g. Program Files): fall back to the system folder.
+		_save_path = "user://" + SAVE_FILE
+		save_warning = "บันทึกเซฟในโฟลเดอร์เกมไม่ได้ จึงเก็บไว้ในโฟลเดอร์ของระบบแทน"
+		f = FileAccess.open(_save_path, FileAccess.WRITE)
+	if f == null:
+		return
 	f.store_string(JSON.stringify(data, "\t"))
+
+
+var _save_path := ""
+var save_warning := ""
+
+
+## saves/saves.json beside the exe in an exported build, or beside project.godot when run
+## from Godot / Play_Game.bat. KARMA_SAVE_DIR (env) points tests at a throwaway folder.
+func save_path() -> String:
+	if _save_path != "":
+		return _save_path
+	var dir := OS.get_environment("KARMA_SAVE_DIR")
+	if dir == "":
+		var base := ProjectSettings.globalize_path("res://") if OS.has_feature("editor") else OS.get_executable_path().get_base_dir()
+		dir = base.path_join("saves")
+	if not DirAccess.dir_exists_absolute(dir) and DirAccess.make_dir_recursive_absolute(dir) != OK:
+		save_warning = "สร้างโฟลเดอร์เซฟข้างเกมไม่ได้ จึงเก็บไว้ในโฟลเดอร์ของระบบแทน"
+		_save_path = "user://" + SAVE_FILE
+	else:
+		_save_path = dir.path_join(SAVE_FILE)
+	return _save_path
+
+
+## Player-facing "new game": wipes every slot, the boss bars, loop, karma and graves.
+func wipe_all() -> void:
+	data = new_data()
+	slot_index = -1
+	save_game()
+
+
+## Empties one save slot (also a sealed, dead one).
+func delete_slot(i: int) -> void:
+	data.slots[i] = {"state": "empty"}
+	if slot_index == i:
+		slot_index = -1
+	save_game()
 
 
 func slot() -> Dictionary:

@@ -14,6 +14,15 @@ func _ready() -> void:
 	var back := Game.button("กลับ", func(): Game.goto("title"), 14)
 	back.position = Vector2(872, 10)
 	add_child(back)
+	var wipe := _confirm_button("ลบเซฟทั้งหมด", "แน่ใจ? กดอีกครั้งเพื่อลบทุกอย่าง", func():
+		Game.wipe_all()
+		get_tree().reload_current_scene(), 14)
+	wipe.position = Vector2(700, 10)
+	add_child(wipe)
+	if Game.save_warning != "":
+		var warn := Game.label(Game.save_warning, 13, Game.C_BAD)
+		warn.position = Vector2(20, 290)
+		add_child(warn)
 	for i in Game.SLOT_COUNT:
 		var card := _slot_card(i)
 		card.position = Vector2(20 + i * 315, 44)
@@ -92,7 +101,34 @@ func _slot_card(i: int) -> PanelContainer:
 			btn.disabled = true
 			btn.tooltip_text = "ปลดผนึกได้เมื่อมีคนปราบจอมมาร หรือทุกเซฟตายหมด"
 	v.add_child(btn)
+	if s.state != "empty":
+		var del := _confirm_button("ลบเซฟนี้", "แน่ใจ? กดอีกครั้ง", func():
+			Game.delete_slot(i)
+			get_tree().reload_current_scene(), 13)
+		v.add_child(del)
 	return card
+
+
+## Button that needs a second click within 3 s; the first click shows the warning text.
+func _confirm_button(text: String, warn: String, action: Callable, size: int) -> Button:
+	var b := Button.new()
+	b.text = text
+	b.add_theme_font_size_override("font_size", size)
+	b.add_theme_color_override("font_color", Color("ff9a9a"))
+	var armed := [false]
+	b.pressed.connect(func():
+		if armed[0]:
+			Game.sfx("bad")
+			action.call()
+			return
+		armed[0] = true
+		Game.sfx("click")
+		b.text = warn
+		await get_tree().create_timer(3.0).timeout
+		if is_instance_valid(b):
+			armed[0] = false
+			b.text = text)
+	return b
 
 
 func _ending_panel() -> PanelContainer:
