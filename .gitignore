@@ -1,0 +1,18 @@
+# Godot 4+ cache / platform folders
+.godot/
+/android/
+export/
+builds/
+
+# Original asset packs (zips, ~1.8 GB, licensed - not redistributed). The game only uses game_assets/.
+assets/
+
+# Saves, backups, temp files
+saves.json
+*.bak
+*.bak*
+*.tmp
+*.tscn*.tmp
+*.log
+Thumbs.db
+.DS_Store

@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://coyyflxy8ygr4"]
+
+[ext_resource type="Script" uid="uid://nl0thdwvqtdp" path="res://scripts/stage_map.gd" id="1"]
+
+[node name="StageMap" type="Node2D" unique_id=450305987]
+script = ExtResource("1")
