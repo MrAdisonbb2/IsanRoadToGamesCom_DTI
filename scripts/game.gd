@@ -16,7 +16,7 @@ const SLOT_COUNT := 3
 const CLASSES := {
 	"knight": {
 		"name": "อัศวิน", "sheet": "characters/knight.png", "counts": [2, 7, 2, 6],
-		"hp": 1200, "mp": 20, "atk": 140, "def": 8, "crit": 0.08,
+		"hp": 120, "mp": 20, "atk": 14, "def": 8, "crit": 0.08,
 		"grow": {"hp": 14, "mp": 4, "atk": 3, "def": 2},
 		"skill": "ฟันทะลวง", "skill_desc": "ฟันแรง 2.2 เท่า (MP 8)", "skill_mp": 8,
 		# Real-time kit: index 0 = M1, 1..3 = keys 1, 2, 3.
@@ -29,7 +29,7 @@ const CLASSES := {
 	},
 	"ranger": {
 		"name": "นักธนู", "sheet": "characters/ranger.png", "counts": [2, 6, 2, 6],
-		"hp": 950, "mp": 25, "atk": 160, "def": 5, "crit": 0.25,
+		"hp": 95, "mp": 25, "atk": 16, "def": 5, "crit": 0.25,
 		"grow": {"hp": 11, "mp": 4, "atk": 4, "def": 1},
 		"skill": "ยิงสามดอก", "skill_desc": "ยิง 3 ดอกสุ่มเป้า ดอกละ 0.8 เท่า (MP 8)", "skill_mp": 8,
 		"skills": [
@@ -41,7 +41,7 @@ const CLASSES := {
 	},
 	"wizard": {
 		"name": "จอมเวท", "sheet": "characters/wizard.png", "counts": [2, 7, 2, 7],
-		"hp": 880, "mp": 50, "atk": 120, "def": 4, "crit": 0.1,
+		"hp": 88, "mp": 50, "atk": 12, "def": 4, "crit": 0.1,
 		"grow": {"hp": 9, "mp": 8, "atk": 3, "def": 1},
 		"skill": "ลูกไฟ", "skill_desc": "เผาศัตรูทุกตัว 1.6 เท่า ทะลุเกราะ (MP 10)", "skill_mp": 10,
 		"skills": [
@@ -55,8 +55,8 @@ const CLASSES := {
 
 const CONTROLS_TEXT := "WASD เดิน · คลิกซ้าย โจมตี · 1 2 3 สกิล · Q ยา HP · R อีเธอร์ · F ปัดป้อง · B กระเป๋า · E โต้ตอบ · Esc เมนู · F11 เต็มจอ"
 # Survival: food and water drain with play time (per second); eating / drinking restores.
-const FOOD_DRAIN := 1.0 / 6.0
-const WATER_DRAIN := 1.0 / 4.0
+const FOOD_DRAIN := 1.0 / 3.0
+const WATER_DRAIN := 1.0 / 3.0
 
 # ---------------------------------------------------------------- items / bag
 ## Bag = slot.bag {item id: count}. 20 slots, each holding a stack of up to 9 of one item.

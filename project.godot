@@ -22,6 +22,10 @@ config/icon="res://icon.svg"
 
 Game="*res://scripts/game.gd"
 
+[debug]
+
+file_logging/enable_file_logging.pc=false
+
 [display]
 
 window/size/viewport_width=960
@@ -37,13 +41,7 @@ window/stretch/mode="canvas_items"
 
 [rendering]
 
-shader_compiler/shader_cache/enabled=false
 rendering_device/pipeline_cache/enable=false
-
 textures/canvas_textures/default_texture_filter=0
 rendering_device/driver.windows="d3d12"
-
-[debug]
-
-file_logging/enable_file_logging=false
-file_logging/enable_file_logging.pc=false
+shader_compiler/shader_cache/enabled=false
