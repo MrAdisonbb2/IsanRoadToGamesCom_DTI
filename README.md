@@ -4,7 +4,7 @@
 > **[👉 กดตรงนี้เพื่อดาวน์โหลด Karma Loop](https://drive.google.com/drive/folders/1kYw573Hbfl_JzYkJMYscslj_ODl3LLba?usp=drive_link)**
 >
 > ไม่ต้องติดตั้ง Godot: ดาวน์โหลด → แตกไฟล์ไว้ที่ Desktop หรือ Documents → ดับเบิลคลิกไฟล์ .exe เล่นได้เลย
-> ถ้าขึ้น "Windows protected your PC" ให้กด **More info → Run anyway**
+> ถ้าขึ้น "Windows protected your PC" ให้กด **More info → Run anyway** · เซฟจะอยู่ในโฟลเดอร์ `saves` ข้างไฟล์เกม
 
 ![Karma Loop](docs/title.png)
 
@@ -93,7 +93,9 @@
 - **เควส**: ส่งของ และตามหาของหาย ได้เงิน + กรรมดี
 - **จอมมาร 3 เฟส**: เลือด 3 หลอด หลอดละ 1000 ใช้ร่วมกันทุกชีวิต เฟส 1 bullet hell · เฟส 2 เพิ่มระดับ (ลูกตามตัว, คำสาปแห่งการเกิดใหม่) · เฟส 3 เกมแครชแล้วเข้าโหมดหน้าต่าง (Windowkill)
 
-## ขั้นตอนการติดตั้ง
+## ขั้นตอนการติดตั้ง (สำหรับนักพัฒนา: เปิดจากซอร์สโค้ด)
+
+> ถ้าแค่อยากเล่น ใช้ลิงก์ดาวน์โหลดด้านบนสุดได้เลย ส่วนนี้สำหรับคนที่อยากเปิด/แก้เกมใน Godot
 
 ### 1. ติดตั้ง Godot
 ดาวน์โหลด **Godot Engine 4.7.1 (stable, Standard)** จาก <https://godotengine.org/download> แตกไฟล์ไว้ที่ไหนก็ได้ (ไม่ต้องติดตั้ง)
