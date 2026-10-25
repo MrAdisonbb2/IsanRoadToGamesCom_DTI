@@ -1,7 +1,7 @@
 # Karma Loop
 
 > ## 🎮 ดาวน์โหลดเกม (Windows) เล่นได้ทันที
-> **[👉 กดตรงนี้เพื่อดาวน์โหลด Karma Loop](https://drive.google.com/drive/folders/1kYw573Hbfl_JzYkJMYscslj_ODl3LLba?usp=drive_link)**
+> **[👉 ดาวน์โหลด Karma Loop](https://drive.google.com/drive/folders/1kYw573Hbfl_JzYkJMYscslj_ODl3LLba?usp=drive_link)**
 >
 > ไม่ต้องติดตั้ง Godot: ดาวน์โหลด → แตกไฟล์ไว้ที่ Desktop หรือ Documents → ดับเบิลคลิกไฟล์ .exe เล่นได้เลย
 > ถ้าขึ้น "Windows protected your PC" ให้กด **More info → Run anyway** · เซฟจะอยู่ในโฟลเดอร์ `saves` ข้างไฟล์เกม
